@@ -23,7 +23,7 @@ deb http://security.ubuntu.com/ubuntu jammy-security main restricted universe mu
 sudo cp /etc/resolv.conf /home/woody/etc/resolv.conf
 ```
 
-### 3. 필수 파일 시스템 마운트
+### 3. 필수 파일 시스템 마운트 <- 여기서 할지말고 sudo활성화 시에 할것,
 `chroot` 환경 내에서 패키지 관리자가 작동하기 위해 필요한 파일 시스템을 마운트합니다. 이 단계는 `/proc`, `/sys`, `/dev` 등을 마운트하는 것을 포함합니다.
 
 ```bash
