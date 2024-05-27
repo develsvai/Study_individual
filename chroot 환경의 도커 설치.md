@@ -31,7 +31,8 @@ apt-get install -y apt-transport-https ca-certificates curl software-properties-
 
 #### Docker GPG 키 추가
 ```bash
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
 ```
 
 #### Docker 저장소 추가
