@@ -134,8 +134,13 @@ sudo schroot -c woody
 ### 11. `schroot` 환경 내에서 sudo 사용
 이제 `sudo` 패키지가 설치되었으므로, `chroot` 환경 내에서 `sudo`를 사용할 수 있습니다.
 
+```bash
+sudo schroot -c woody
+```
+
 #### a. `woody` 사용자에게 `sudo` 권한 부여
 `woody` 사용자가 `sudo` 명령어를 사용할 수 있도록 권한을 부여합니다.
+
 
 ```bash
 echo "woody ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/woody
