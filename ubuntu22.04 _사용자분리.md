@@ -51,7 +51,6 @@ sudo mkdir -p /home/woody/{bin,lib,lib64,usr,usr/bin,dev,proc,sys,run,home}
 sudo cp -v /bin/bash /home/woody/bin/
 sudo cp -v /bin/ls /home/woody/bin/
 sudo cp -v /bin/mkdir /home/woody/bin/
-#입력 해보고 동일한 파일 이라 뜨면 패스 
 
 # 필요한 라이브러리 파일 복사 (ldd 명령어를 사용하여 확인)
 sudo cp -v /lib/x86_64-linux-gnu/{libtinfo.so.6,libdl.so.2,libc.so.6,libselinux.so.1} /home/woody/lib/
@@ -65,6 +64,7 @@ sudo cp -v /lib64/ld-linux-x86-64.so.2 /home/woody/lib64/ #동일 한 파일일 
 sudo mknod -m 666 /home/woody/dev/null c 1 3
 sudo mknod -m 666 /home/woody/dev/tty c 5 0
 sudo mknod -m 666 /home/woody/dev/zero c 1 5
+#입력 해보고 동일한 파일 이라 뜨면 패스
 
 sudo mount --bind /dev /home/haru2/dev
 sudo mount --bind /proc /home/haru2/proc
