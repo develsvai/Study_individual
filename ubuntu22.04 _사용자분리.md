@@ -131,7 +131,7 @@ sudo schroot -c woody
 이제 프롬프트가 `woody@hostname:~$`와 같이 일반 사용자 셸 프롬프트처럼 표시되어야 합니다.
 
 
-### 4. `schroot` 환경 내에서 sudo 사용
+### 11. `schroot` 환경 내에서 sudo 사용
 이제 `sudo` 패키지가 설치되었으므로, `chroot` 환경 내에서 `sudo`를 사용할 수 있습니다.
 
 #### a. `woody` 사용자에게 `sudo` 권한 부여
