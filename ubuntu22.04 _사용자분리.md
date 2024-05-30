@@ -81,6 +81,8 @@ sudo cp -v /etc/skel/.bashrc /home/woody/home/woody/
 sudo cp -v /etc/skel/.profile /home/woody/home/woody/
 sudo cp -v /etc/skel/.bash_logout /home/woody/home/woody/
 sudo chown -R woody:woody /home/woody/home/woody
+sudo chown root:root woody
+sudo chmod 755 woody
 ```
 
 ### 8. `/etc/passwd` 파일 설정
