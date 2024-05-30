@@ -130,16 +130,16 @@ sudo schroot -c woody
 
 이제 프롬프트가 `woody@hostname:~$`와 같이 일반 사용자 셸 프롬프트처럼 표시되어야 합니다.
 
-### 요약
-1. **`woody` 사용자 생성**: 새로운 사용자를 생성합니다.
-2. **`schroot` 및 `debootstrap` 패키지 설치**: `schroot`와 `debootstrap` 패키지를 설치합니다.
-3. **`schroot` 설정 파일 편집**: `/etc/schroot/schroot.conf` 파일을 편집하여 `woody` 사용자의 `chroot` 환경을 설정합니다.
-4. **`chroot` 환경 설치**: `debootstrap`을 사용하여 `chroot` 환경을 설치합니다.
-5. **필수 디렉토리 및 파일 설정**: 필요한 파일 시스템 구조를 설정하고 필요한 파일을 복사합니다.
-6. **장치 파일 생성**: `chroot` 환경 내에서 필요한 장치 파일을 생성합니다.
-7. **사용자 홈 디렉토리 생성 및 설정 파일 복사**: `chroot` 환경 내에 사용자 홈 디렉토리를 생성하고 필요한 설정 파일을 복사합니다.
-8. **`/etc/passwd` 파일 설정**: `chroot` 환경 내에 `/etc/passwd` 파일을 설정합니다.
-9. **SSH 데몬 설정**: `woody` 사용자가 로그인 시 자동으로 `chroot` 환경으로 들어가도록 설정합니다.
-10. **`schroot` 환경 확인**: 설정을 확인하고 테스트합니다.
 
-이 단계를 따라가면 `woody` 사용자가 SSH로 로그인 시 자동으로 `chroot` 환경으로 진입하게 됩니다. 추가로 궁금한 사항이나 다른 설정이 필요하면 말씀해 주세요.
+### 4. `schroot` 환경 내에서 sudo 사용
+이제 `sudo` 패키지가 설치되었으므로, `chroot` 환경 내에서 `sudo`를 사용할 수 있습니다.
+
+#### a. `woody` 사용자에게 `sudo` 권한 부여
+`woody` 사용자가 `sudo` 명령어를 사용할 수 있도록 권한을 부여합니다.
+
+```bash
+echo "woody ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/woody
+chmod 0440 /etc/sudoers.d/woody
+```
+
+이제 `woody` 사용자는 `chroot` 환경 내에서 `sudo` 명령어를 사용할 수 있습니다.
