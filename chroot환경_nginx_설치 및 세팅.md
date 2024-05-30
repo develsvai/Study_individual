@@ -15,6 +15,9 @@ sudo mkdir -p /mnt/chroot/ubuntu/var/cache/nginx
 ## 확인 사항
 
 1. 80포트 사용중이라면 /etc/nginx/site-enabled/default 파일 에서 포트 변경
+```
+sudo netstat -tuln | grep :80 # 해당 포트 사용 여부
+```
 
 ## 실행
 
