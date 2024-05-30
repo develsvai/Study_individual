@@ -64,10 +64,11 @@ sudo cp -v /lib64/ld-linux-x86-64.so.2 /home/woody/lib64/
 sudo mknod -m 666 /home/woody/dev/null c 1 3
 sudo mknod -m 666 /home/woody/dev/tty c 5 0
 sudo mknod -m 666 /home/woody/dev/zero c 1 5
-sudo mknod -m 666 /home/woody/dev/random c 1 8
-sudo mount -o bind /dev /home/woody/dev
-sudo mount -o bind /proc /home/woody/proc
-sudo mount -o bind /sys /home/woody/sys
+
+sudo mount --bind /dev /home/haru2/dev
+sudo mount --bind /proc /home/haru2/proc
+sudo mount --bind /sys /home/haru2/sys
+sudo mount -t devpts devpts /home/haru2/dev/pts
 ```
 
 ### 7. 사용자 홈 디렉토리 생성 및 설정 파일 복사
