@@ -13,7 +13,7 @@ docker run --name mysql-server -v /media/hongyongjae/Databese/mysql:/var/lib/mys
 docker exec mysql-server mysqldump -u root -p --all-databases >       /media/hongyongjae/Database
 
 # 컨테이너 bash 접속
-docker exec -it mysql-container bash
+docker exec -it mysql-container /bin/bash
 
 # MySQL 접속
 mysql -u root -p
