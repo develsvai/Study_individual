@@ -1,4 +1,4 @@
-우분투 22.04에서 `schroot`를 사용하여 `woody` 사용자의 `/home/woody` 디렉토리를 `chroot` 환경의 루트로 설정하고, 그 안에 `/home/woody/home/woody`를 사용자의 홈 폴더로 설정하는 방법을 처음부터 자세히 설명드리겠습니다.
+우분투 22.04에서 `schroot`를 사용하여 `woody` 사용자의 `/home/woody` 디렉토리를 `chroot` 환경의 루트로 설정하고, 그 안에 `/home/woody/home/woody`를 사용자의 홈 폴더로 설정하는 방법을 설명.
 
 ### 1. `woody` 사용자 생성
 우선, `woody` 사용자를 생성합니다. 생성되지 않았다면 아래 명령어로 생성합니다.
@@ -22,7 +22,7 @@ sudo apt-get install schroot debootstrap
 sudo nano /etc/schroot/schroot.conf
 ```
 
-파일의 끝에 다음 내용을 추가합니다:
+파일의 끝에 다음 내용을 추가.
 
 ```plaintext
 [woody]
@@ -34,14 +34,14 @@ type=directory
 ```
 
 ### 4. `chroot` 환경 설치
-`chroot` 환경을 설치할 디렉토리를 만들고 `debootstrap`을 사용하여 우분투 기본 시스템을 설치합니다.
+`chroot` 환경을 설치할 디렉토리를 만들고 `debootstrap`을 사용하여 우분투 기본 시스템을 설치.
 
 ```bash
 sudo mkdir -p /home/woody
 sudo debootstrap --variant=minbase jammy /home/woody http://archive.ubuntu.com/ubuntu/
 ```
 
-여기서 `jammy`는 Ubuntu 22.04 LTS의 코드명입니다.
+여기서 `jammy`는 Ubuntu 22.04 LTS의 코드명.
 
 ### 5. 필수 디렉토리 및 파일 설정
 `chroot` 환경 내에 필요한 파일 시스템 구조를 설정하고 필요한 파일을 복사합니다.
@@ -67,9 +67,32 @@ sudo mknod -m 666 /home/woody/dev/zero c 1 5
 #입력 해보고 동일한 파일 이라 뜨면 패스
 
 sudo mount --bind /dev /home/haru2/dev
+# /dev 디렉토리를 /home/haru2/dev에 바인드 마운트합니다.
+# 목적: /dev의 장치 파일을 /home/haru2/dev에서도 접근 가능하게 함.
+
 sudo mount --bind /proc /home/haru2/proc
+# /proc 디렉토리를 /home/haru2/proc에 바인드 마운트합니다.
+# 목적: /proc의 가상 파일 시스템을 /home/haru2/proc에서도 접근 가능하게 함.
+
 sudo mount --bind /sys /home/haru2/sys
+# /sys 디렉토리를 /home/haru2/sys에 바인드 마운트합니다.
+# 목적: /sys의 시스템 정보를 /home/haru2/sys에서도 접근 가능하게 함.
+
+sudo mount --bind /tmp /media/hongyongjae/Database/cagongjoke/tmp
+# /tmp 디렉토리를 /media/hongyongjae/Database/cagongjoke/tmp에 바인드 마운트합니다.
+# 목적: /tmp의 임시 파일을 /media/hongyongjae/Database/cagongjoke/tmp에서도 접근 가능하게 함.
+# 이게 없으면 apt-get 사용시 /tmp에 파일을 생성할수 없어서
+
+#dated and the previous index files will be used. GPG error: #http://archive.ubuntu.com/ubuntu jammy InRelease: Couldn't create temporary file #/tmp/apt.conf.aRYMpu for passing config to apt-key
+#W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/jammy/InRelease  #Couldn't create temporary file /tmp/apt.conf.aRYMpu for passing config to apt-key
+#W: Some index files failed to download. They have been ignored, or old ones used #instead.
+
+#에러가 뜰수 있음
+
 sudo mount -t devpts devpts /home/haru2/dev/pts
+# devpts 파일 시스템 타입으로 새로운 장치 파일 시스템을 /home/haru2/dev/pts에 마운트합니다.
+# 목적: 의사 터미널 장치를 /home/haru2/dev/pts에서 사용 가능하게 함.
+
 ```
 
 ### 7. 사용자 홈 디렉토리 생성 및 설정 파일 복사
