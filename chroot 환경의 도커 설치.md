@@ -21,7 +21,7 @@ mount --rbind /sys /sys
 mount --rbind /dev /dev
 mount --rbind /run /run
 ```
-해당 명령을 사용하면 
+해당 명령을 사용하면 컨테이너를  실행하는 과정에서 
 ```Attempting next endpoint for pull after error: failed to register layer: remount /, flags: 0x84000: invalid argument```
 위의 에러가 뜨고 현재는 원인을 알수없음 
 
