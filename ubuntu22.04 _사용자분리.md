@@ -166,5 +166,8 @@ chmod 0440 /etc/sudoers.d/woody
 
 이제 `woody` 사용자는 `chroot` 환경 내에서 `sudo` 명령어를 사용할 수 있습니다.
 
+### !외부 스토리지에 사용자 파일을 저장시 마운트된 경로서 부터 소유자가 root 여야함
+ex) chroot 사용자의 환경 경로 가 /media/hongyongjae/Database/user 일경우 
+루트 경로 에 존재하는 /media를 제외 /hongyongjae/Databese/user 까지의 경로를 전부 root가 가지고 있어야함!
 
-
+아니면 ssh 에서 접근이 안됨...알고 싶지 않았음...나도 몰랐지 이걸가지고 개삽질을 하게 될줄..
