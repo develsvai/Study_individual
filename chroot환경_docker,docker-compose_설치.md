@@ -42,7 +42,7 @@ sudo mount --rbind /sys/fs/cgroup /media/hongyongjae/Database/cagongjoke/sys/fs/
 #### Docker 설치 준비
 ```bash
 apt-get update
-//기본 gnupg2 는 사용되지 않은 대체 패키지 gnupg를 사용
+//기본 gnupg2 는 사용되지 않음, 대체 패키지 gnupg를 사용
 apt-get install -y apt ca-certificates curl gnupg software-properties-common
 
 ```
