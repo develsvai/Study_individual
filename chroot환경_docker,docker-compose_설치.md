@@ -36,7 +36,7 @@ sudo mount --rbind /run /home/woody/run
 sudo mount --rbind /sys/fs/cgroup /media/hongyongjae/Database/cagongjoke/sys/fs/cgroup
 ```
 
-### 3. Docker 설치
+### 3. Docker 설치 !ubuntu22.04 기준
 이제 chroot 환경 내에서 Docker를 설치합니다. 아래 명령어는 Ubuntu에서 Docker를 설치하는 예시입니다.
 
 #### Docker 설치 준비
