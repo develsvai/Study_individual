@@ -1,5 +1,5 @@
+## 1. MySQL Docker Container 실행 및 설정
 ```markdown
-## MySQL Docker Container 실행 및 설정
 
 ### 1. MySQL Docker 컨테이너 실행
 ```sh
@@ -77,8 +77,7 @@ FLUSH PRIVILEGES;
 ```
 
 ### Mysql user 관련설정 
-```
- ```markdown
+```sql
 
 ## MySQL 유저 권한 설정
 
