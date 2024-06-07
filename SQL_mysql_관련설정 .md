@@ -51,7 +51,7 @@ CREATE USER 'example_user'@'%' IDENTIFIED BY 'example_password';
 GRANT ALL PRIVILEGES ON example_db.* TO 'example_user'@'%';
 
 -- SHOW DATABASES 권한 금지
-//mysql 에서 특정 db 에만 접근권한을 준다해도 조회 권한은 그대로 존재함, 그렇기에 허용한 db 외에 다른 db를 조회 하지 못하게 하려면 show databases 권한을 뻇어야함.
+#mysql 에서 특정 db 에만 접근권한을 준다해도 조회 권한은 그대로 존재함, 그렇기에 허용한 db 외에 다른 db를 조회 하지 못하게 하려면 show databases 권한을 뻇어야함.
 REVOKE SHOW DATABASES ON *.* FROM 'example_user'@'%';
 
 -- 다른 데이터베이스에 대한 접근 권한 제한
