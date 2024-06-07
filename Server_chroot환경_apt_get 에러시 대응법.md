@@ -60,12 +60,3 @@ sudo cp /etc/hosts /home/woody/etc/hosts
 ```bash
 sudo apt-get install apt
 ```
-
-### 요약
-- `/etc/apt/sources.list` 파일을 설정합니다.
-- DNS 설정을 복사합니다 (`/etc/resolv.conf`).
-- 필수 파일 시스템을 마운트합니다 (`/dev`, `/proc`, `/sys`).
-- `schroot` 환경 내에서 `apt-get update` 명령어를 실행합니다.
-- 네트워크 설정을 확인합니다 (`/etc/hosts`).
-
-이 단계를 따르면 `chroot` 환경 내에서 `sudo apt-get update`가 정상적으로 작동할 것입니다. 추가로 궁금한 사항이나 다른 설정이 필요하면 말씀해 주세요.
