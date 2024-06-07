@@ -81,3 +81,53 @@ dockerd &
 ```bash
 docker run hello-world
 ```
+
+### Docker Compose 설치
+이제 `docker-compose`를 설치합니다. 가장 최신 버전을 설치하는 방법을 안내합니다.
+
+```sh
+# 최신 docker-compose 버전 확인
+DOCKER_COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep -Po '"tag_name": "\K.*\d')
+
+# docker-compose 바이너리 다운로드 및 설치
+sudo curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+# 실행 권한 부여
+sudo chmod +x /usr/local/bin/docker-compose
+
+# 심볼릭 링크 생성 (필요한 경우)
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+# 설치 확인
+docker-compose --version
+```
+
+위의 명령어들을 실행하면 `docker-compose`가 시스템에 설치되고, 이를 통해 Docker Compose를 사용할 수 있습니다.
+
+### 3. Docker Compose 사용 예제
+이제 Docker Compose를 사용할 준비가 되었습니다. 간단한 `docker-compose.yml` 파일을 사용하여 여러 컨테이너를 정의하고 실행할 수 있습니다.
+
+예시로, 간단한 웹 서버와 데이터베이스를 구성하는 `docker-compose.yml` 파일을 작성해보겠습니다.
+
+```yaml
+version: '3'
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+```
+
+이 파일을 현재 디렉토리에 저장한 후, 다음 명령어를 실행하여 서비스를 시작할 수 있습니다.
+
+```sh
+docker-compose up
+```
+
+위의 명령어는 `docker-compose.yml` 파일에 정의된 모든 컨테이너를 시작합니다. 웹 서버는 로컬 머신의 포트 8080에서 접근할 수 있습니다.
+
+이로써 일반적인 환경에서 `docker-compose` 설치 및 사용 방법을 안내해 드렸습니다. 추가적으로 궁금한 사항이 있다면 언제든지 질문해 주세요.
