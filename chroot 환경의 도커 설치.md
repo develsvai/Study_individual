@@ -28,7 +28,7 @@ mount --rbind /run /run
 
 따라서 도커가 사용하는 시스템 파일은 아래 명령을 통해  메인의 시스템 파일을 바인딩하여 사용 즉 메인 시스템에 설치된 도커 와 프로세스 를  공유함.
 
-## !이 과정은 메인 시스템에서 sudo 권한으로 이루어져야함!(재부팅시 리마운트)
+#### !이 과정은 메인 시스템에서 sudo 권한으로 이루어져야함!(재부팅시 리마운트)
 ```bash
 sudo mount --rbind /sys /home/woody/sys
 sudo mount --rbind /proc /home/woody/proc
