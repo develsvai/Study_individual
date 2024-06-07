@@ -75,12 +75,11 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 # 변경 사항 적용
 FLUSH PRIVILEGES;
 ```
-```
-
 
 ### Mysql user 관련설정 
-
+```
  ```markdown
+
 ## MySQL 유저 권한 설정
 
 ### 1. 특정 데이터베이스에만 접근 허용
