@@ -92,6 +92,7 @@ sudo mount --bind /tmp /media/hongyongjae/Database/cagongjoke/tmp
 sudo mount -t devpts devpts /home/haru2/dev/pts
 # devpts 파일 시스템 타입으로 새로운 장치 파일 시스템을 /home/haru2/dev/pts에 마운트합니다.
 # 목적: 의사 터미널 장치를 /home/haru2/dev/pts에서 사용 가능하게 함.
+# 쉽게 말해 sudo 사용 가능하게 하는 명령임!
 
 ```
 
