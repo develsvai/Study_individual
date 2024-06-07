@@ -1,4 +1,4 @@
-## 정리된 스크립트
+## 도커에서의 Mysql 설정법
 ```sh
 # MySQL Docker 컨테이너 실행
 docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=smt32f734o@ -d -p 3306:3306 mysql:latest
@@ -31,7 +31,6 @@ FLUSH PRIVILEGES;
 
 ### Mysql user 관련설정 
 
-## 정리
 ```sh
 # MySQL 접속
 mysql -u root -p
@@ -57,9 +56,6 @@ FLUSH PRIVILEGES;
 SHOW GRANTS FOR 'username'@'host';
 ```
 
-### Mysql CRUD
-
-```markdown
 ## MySQL의 CRUD 명령어 사용법
 
 ### 1. CREATE (데이터 삽입)
