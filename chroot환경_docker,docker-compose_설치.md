@@ -125,9 +125,12 @@ services:
 이 파일을 현재 디렉토리에 저장한 후, 다음 명령어를 실행하여 서비스를 시작할 수 있습니다.
 
 ```sh
-docker-compose up
+docker-compose up//컨테이너 실행
+
+docker-compose up -d // 백그라운드로 컨테이너 실행
+
+docker-compose -f docker-compose-dev.yaml up -d //컴포즈 파일 지정 백그라운드 실행
+
+docker compose up --build -d // 빌드후 백그라운드 실행 
+
 ```
-
-위의 명령어는 `docker-compose.yml` 파일에 정의된 모든 컨테이너를 시작합니다. 웹 서버는 로컬 머신의 포트 8080에서 접근할 수 있습니다.
-
-이로써 일반적인 환경에서 `docker-compose` 설치 및 사용 방법을 안내해 드렸습니다. 추가적으로 궁금한 사항이 있다면 언제든지 질문해 주세요.
