@@ -186,6 +186,5 @@ WHERE ProductID = 1;
 DELETE FROM Products
 WHERE ProductID = 2;
 ```
-```
 
 
