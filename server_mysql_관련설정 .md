@@ -76,3 +76,63 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 ```
 ```
+
+
+# mysql user 관련 설정
+
+ ```markdown
+## MySQL 유저 권한 설정
+
+### 1. 특정 데이터베이스에만 접근 허용
+```sql
+-- 새로운 사용자 생성 및 비밀번호 설정
+CREATE USER 'username'@'host' IDENTIFIED BY 'password';
+
+-- 특정 데이터베이스에만 접근 허용
+GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'host';
+```
+
+### 2. 데이터베이스 목록 보기 금지
+```sql
+-- 사용자에게 SHOW DATABASES 금지
+REVOKE SHOW DATABASES ON *.* FROM 'username'@'host';
+
+-- 다른 데이터베이스에 대한 접근 권한 제한
+REVOKE ALL PRIVILEGES ON *.* FROM 'username'@'host';
+```
+
+### 3. 권한 적용
+```sql
+-- 권한 적용
+FLUSH PRIVILEGES;
+```
+
+## 예시: `example_user`가 `example_db`에만 접근할 수 있도록 설정
+```sh
+# MySQL 접속
+mysql -u root -p
+```
+
+```sql
+-- example_user 생성 및 비밀번호 설정
+CREATE USER 'example_user'@'%' IDENTIFIED BY 'example_password';
+
+-- example_db에 대한 모든 권한 부여
+GRANT ALL PRIVILEGES ON example_db.* TO 'example_user'@'%';
+
+-- SHOW DATABASES 권한 금지
+REVOKE SHOW DATABASES ON *.* FROM 'example_user'@'%';
+
+-- 다른 데이터베이스에 대한 접근 권한 제한
+REVOKE ALL PRIVILEGES ON *.* FROM 'example_user'@'%';
+
+-- 권한 적용
+FLUSH PRIVILEGES;
+```
+
+### 4. 참고: 권한 확인
+```sql
+-- 특정 유저의 권한 확인
+SHOW GRANTS FOR 'username'@'host';
+```
+```
