@@ -4,7 +4,8 @@
 chroot 환경에서 Docker를 설치하는 과정은 다소 복잡할 수 있지만, 다음 단계들을 따라 설치할 수 있습니다. chroot 환경 내에서 Docker를 제대로 실행하려면 몇 가지 추가 설정이 필요합니다.
 
 ### 1. chroot 환경으로 이동
-먼저 chroot 환경으로 이동합니다. chroot 환경이 `/home/woody`에 있다고 가정합니다.
+먼저 chroot 환경으로 이동합니다. chroot 환경이 `/home/woody`에 있다고 가정,
+이동하지 말것!,
 
 ```bash
 sudo chroot /home/woody
@@ -27,6 +28,7 @@ mount --rbind /run /run
 
 따라서 도커가 사용하는 시스템 파일은 아래 명령을 통해  메인의 시스템 파일을 바인딩하여 사용 즉 메인 시스템에 설치된 도커 와 프로세스 를  공유함.
 
+## !이 과정은 메인 시스템에서 sudo 권한으로 이루어져야함!(재부팅시 리마운트)
 ```bash
 sudo mount --rbind /sys /home/woody/sys
 sudo mount --rbind /proc /home/woody/proc
