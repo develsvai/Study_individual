@@ -11,13 +11,28 @@ sudo chroot /home/woody
 ```
 
 ### 2. 필요한 디렉토리 마운트
-chroot 환경 내에서 Docker를 실행하려면 몇 가지 중요한 파일 시스템을 마운트해야 합니다.
+chroot 환경 내에서 Docker를 실행하려면 몇 가지 중요한 파일 시스템을 마운트해야 함,
+단 확인결과 도커는 메인 시스템과 완전 분리는 어려운것으로 확인됨 
 
-```bash
+완전 분리를 위해서는 분리된 환경에 시스템파일을 복제하고 아래 명령을 통해 재마운트하는 과정이 필요하지만 
+```
 mount -t proc /proc /proc
 mount --rbind /sys /sys
 mount --rbind /dev /dev
 mount --rbind /run /run
+```
+해당 명령을 사용하면 
+```Attempting next endpoint for pull after error: failed to register layer: remount /, flags: 0x84000: invalid argument```
+위의 에러가 뜨고 현재는 원인을 알수없음 
+
+따라서 도커가 사용하는 시스템 파일은 아래 명령을 통해  메인의 시스템 파일을 바인딩하여 사용 즉 메인 시스템에 설치된 도커 와 프로세스 를  공유함.
+
+```bash
+sudo mount --rbind /sys /home/woody/sys
+sudo mount --rbind /proc /home/woody/proc
+sudo mount --rbind /dev /home/woody/dev
+sudo mount --rbind /run /home/woody/run
+sudo mount --rbind /sys/fs/cgroup /media/hongyongjae/Database/cagongjoke/sys/fs/cgroup
 ```
 
 ### 3. Docker 설치
