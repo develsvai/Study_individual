@@ -4,13 +4,13 @@
 docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=smt32f734o@ -d -p 3306:3306 mysql:latest
 
 # 도커 볼룸을 활용 mysql 데이터 저장 경로를 컨테이너 내부 디렉토리와 마운트 
-docker run --name mysql-server -v mysql_data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
+docker run --name mysql-container -v mysql_data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
 
 # 절대경로를 활용  mysql 데이터 저장 경로를 컨테이너 내부 디렉토리와 마운트 
-docker run --name mysql-server -v /media/hongyongjae/Databese/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
+docker run --name mysql-container -v /media/hongyongjae/Databese/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
 
 # Mysql 의 데이터 백업
-docker exec mysql-server mysqldump -u root -p --all-databases >       /media/hongyongjae/Database
+docker exec mysql-container mysqldump -u root -p --all-databases >       /media/hongyongjae/Database
 
 # 컨테이너 bash 접속
 docker exec -it mysql-container /bin/bash
