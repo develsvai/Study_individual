@@ -42,29 +42,35 @@ sudo mount --rbind /sys/fs/cgroup /media/hongyongjae/Database/cagongjoke/sys/fs/
 #### Docker 설치 준비
 ```bash
 apt-get update
-apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+//기본 gnupg2 는 사용되지 않은 대체 패키지 gnupg를 사용
+apt-get install -y apt ca-certificates curl gnupg software-properties-common
+
 ```
 
 #### Docker GPG 키 추가
 ```bash
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
 
 ```
 
 #### Docker 저장소 추가
 ```bash
-add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
 ```
 
 #### Docker 설치
 ```bash
-apt-get update
-apt-get install -y docker-ce
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
 ```
 
-### 4. Docker 데몬 실행
-chroot 환경 내에서 Docker 데몬을 실행해야 합니다. 이를 위해 systemd를 사용할 수 없으므로 직접 데몬을 실행해야 합니다.
-
+#### Docker 데몬 실행
 ```bash
 dockerd &
 ```
@@ -75,52 +81,3 @@ dockerd &
 ```bash
 docker run hello-world
 ```
-
-### 전체 절차 요약
-
-1. chroot 환경으로 이동:
-   ```bash
-   sudo chroot /home/woody
-   ```
-
-2. 필요한 디렉토리 마운트:
-   ```bash
-   mount -t proc /proc /proc
-   mount --rbind /sys /sys
-   mount --rbind /dev /dev
-   mount --rbind /run /run
-   ```
-
-3. Docker 설치 준비:
-   ```bash
-   apt-get update
-   apt-get install -y apt-transport-https ca-certificates curl software-properties-common
-   ```
-
-4. Docker GPG 키 추가:
-   ```bash
-   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-   ```
-
-5. Docker 저장소 추가:
-   ```bash
-   add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-   ```
-
-6. Docker 설치:
-   ```bash
-   apt-get update
-   apt-get install -y docker-ce
-   ```
-
-7. Docker 데몬 실행:
-   ```bash
-   dockerd &
-   ```
-
-8. Docker 사용:
-   ```bash
-   docker run hello-world
-   ```
-
-이 단계를 통해 chroot 환경 내에서 Docker를 설치하고 사용할 수 있습니다. 그러나 chroot 환경에서 Docker를 사용하는 것은 다소 제한적일 수 있으며, 추가적인 설정이 필요할 수 있습니다.
