@@ -171,3 +171,4 @@ ex) chroot 사용자의 환경 경로 가 /media/hongyongjae/Database/user 일�
 루트 경로 에 존재하는 /media를 제외 /hongyongjae/Databese/user 까지의 경로를 전부 root가 가지고 있어야함!
 
 아니면 ssh 에서 접근이 안됨...알고 싶지 않았음...나도 몰랐지 이걸가지고 개삽질을 하게 될줄..
+ssh는 메인 시스템의 ssh 에서 chroot 세션을 생성해서 넘기는 원리임.
