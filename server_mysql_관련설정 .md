@@ -3,6 +3,15 @@
 # MySQL Docker 컨테이너 실행
 docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=smt32f734o@ -d -p 3306:3306 mysql:latest
 
+# 도커 볼룸을 활용 mysql 데이터 저장 경로를 컨테이너 내부 디렉토리와 마운트 
+docker run --name mysql-server -v mysql_data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
+
+# 절대경로를 활용  mysql 데이터 저장 경로를 컨테이너 내부 디렉토리와 마운트 
+docker run --name mysql-server -v /media/hongyongjae/Databese/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
+
+# Mysql 의 데이터 백업
+docker exec mysql-server mysqldump -u root -p --all-databases >       /media/hongyongjae/Database
+
 # 컨테이너 bash 접속
 docker exec -it mysql-container bash
 
@@ -31,12 +40,10 @@ FLUSH PRIVILEGES;
 
 ### Mysql user 관련설정 
 
-```sh
+```sql
 # MySQL 접속
 mysql -u root -p
-```
 
-```sql
 -- example_user 생성 및 비밀번호 설정
 CREATE USER 'example_user'@'%' IDENTIFIED BY 'example_password';
 
@@ -44,6 +51,7 @@ CREATE USER 'example_user'@'%' IDENTIFIED BY 'example_password';
 GRANT ALL PRIVILEGES ON example_db.* TO 'example_user'@'%';
 
 -- SHOW DATABASES 권한 금지
+//mysql 에서 특정 db 에만 접근권한을 준다해도 조회 권한은 그대로 존재함, 그렇기에 허용한 db 외에 다른 db를 조회 하지 못하게 하려면 show databases 권한을 뻇어야함.
 REVOKE SHOW DATABASES ON *.* FROM 'example_user'@'%';
 
 -- 다른 데이터베이스에 대한 접근 권한 제한
@@ -54,8 +62,9 @@ FLUSH PRIVILEGES;
 
 -- 특정 유저의 권한 확인
 SHOW GRANTS FOR 'username'@'host';
-```
 
+*.* : 모든 데이터베이스와 모든 테이블을 의미.
+```
 ## MySQL의 CRUD 명령어 사용법
 
 ### 1. CREATE (데이터 삽입)
