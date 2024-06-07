@@ -78,7 +78,7 @@ FLUSH PRIVILEGES;
 ```
 
 
-# mysql user 관련 설정
+### Mysql user 관련설정 
 
  ```markdown
 ## MySQL 유저 권한 설정
