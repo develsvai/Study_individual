@@ -1,3 +1,5 @@
+# 프론트 엔드 프로젝트 구조 
+
 ```
   src
   ├── @types //typeScript 사용시 사용될 데이터들의 타입을 정의 
@@ -32,7 +34,7 @@
   │   ├── page.tsx
   │   └── signup
   │       └── page.tsx
-  	├── components // 빌드 시 페이지로 생성 되지 않는 모든 컴포넌트 들이 존재하는 경로 
+  ├── components // 빌드 시 페이지로 생성 되지 않는 모든 컴포넌트 들이 존재하는 경로 
   │   ├── common // 재사용 가능 한 컴포넌트 들이 존재하는 경로 
   │   │   ├── Button
   │   │   │   ├── Button.module.css
@@ -44,25 +46,8 @@
   │   │   │   ├── ImageCard.module.css
   │   │   │   └── ImageCard.tsx
   │   │   ├── Inputbox
-  │   │   │   ├── InpuBox.tsx
-  │   │   │   └── InputBox.module.css
-  │   │   ├── SearchBar
-  │   │   │   ├── SearchBar.module.css
-  │   │   │   └── SearchBar.tsx
-  │   │   ├── SideNavBar
-  │   │   │   ├── SideNav.module.css
-  │   │   │   └── SideNavBar.tsx
-  │   │   ├── SlideImageCard
-  │   │   │   ├── SlideImageCard.module.css
-  │   │   │   └── SlideImageCard.tsx
-  │   │   ├── TopBanner
-  │   │   │   ├── TopBanner.module.css
-  │   │   │   └── TopBanner.tsx
-  │   │   ├── reviewsCard
-  │   │   │   ├── reviewsCard.module.css
-  │   │   │   └── reviewsCard.tsx
-  │   │   └── test
-  │   │       └── page.tsx
+  │   │       ├── InpuBox.tsx
+  │   │       └── InputBox.module.css
   │   └── pages // /app 경로 에서 호출 될 페이지들의 ui 컴포넌트 경로 
   │       ├── CafesPage
   │       │   ├── CafesPage.module.css
@@ -78,3 +63,6 @@
   │           └── SiginupPage.tsx
   └── styles //재사용이 가능한 스타일 파일이 존재하는 경로 
 ```
+
+
+
